@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Italiana&family=Jura:wght@300;400;500;600;700&family=Kranky&display=swap');
+
+/*** Page theme ****/
+:root {
+    --spacing: 1rem;
+
+
+    --font-title: 'Italiana', serif;
+    --font-text: 'Jura', sans-serif;
+
+    --primary: #055db0c7;
+    --light: white;
+    --text: color-mix(in srgb, var(--primary) 3%, black);
+}
+
+body {
+    margin: 0;
+    background-image: url('paper_background.png');
+    padding: var(--spacing);
+    font-family: var(--font-text);
+}
+
+.btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--light);
+    background-color: var(--primary);
+    padding-block: var(--spacing);
+    padding-inline: var(--spacing);
+    border-radius: 2.5rem;
+    width: fit-content;
+    gap: var(--spacing);
+    font-size: 1.2rem;
+}
+
+:is(a) {
+    text-decoration: none;
+}
+
+:is(.btn:hover) {
+    background-color: color-mix(in srgb, var(--primary) 90%, var(--light));
+}
+
+:is(.btn:active) {
+    background-color: color-mix(in srgb, var(--primary) 90%, var(--text));
+
+}
+
+.btn:focus {
+    box-shadow: 0 0 6px 3px var(--primary);
+}
+
+:where(h1, h2, h3, h4) {
+    font-family: var(--font-title);
+    color: var(--primary);
+}
+
+header {
+    display: grid;
+    place-items: center;
+    gap: 3rem;
+}
+
+
+/*** 3D Cube ****/
+* {
+    transform-style: preserve-3d;
+}
+
+body {
+    margin: 0;
+    background-image: url('paper_background.png');
+    padding: var(--spacing);
+}
+
+main {
+    transform: rotateX(60deg);
+    height: 100vh;
+    display: grid;
+    place-items: center;
+}
+
+.cube {
+    display: grid;
+    animation: rotation 5s linear infinite;
+}
+
+@keyframes rotation {
+    to {
+        rotate: 360deg;
+    }
+}
+
+.cube div {
+    --size: 200px;
+    width: var(--size);
+    aspect-ratio: 1;
+    background-color: var(--primary);
+    border: 1px solid black;
+    grid-column: 1;
+    grid-row: 1;
+    display: grid;
+    place-items: center;
+    color: var(--light);
+    font-size: 2rem;
+}
+
+.left {
+    rotate: y -90deg;
+    transform-origin: left;
+}
+
+.right {
+    rotate: y 90deg;
+    transform-origin: right;
+}
+
+.back {
+    rotate: x 90deg;
+    transform-origin: top;
+}
+
+.front {
+    rotate: x -90deg;
+    transform-origin: bottom;
+}
+
+.top {
+    translate: 0 0 var(--size);
+}
